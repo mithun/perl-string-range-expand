@@ -1,0 +1,9 @@
+*.bak
+*.tar.gz
+*.tmp
+*~
+blib*
+Build
+pm_to_blib*
+_build*
+String-Range-Expand-*
