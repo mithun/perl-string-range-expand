@@ -172,9 +172,56 @@ String::Range::Expand - Expand range-like strings
 
 =head1 DESCRIPTION
 
-=head1 DEPENDENCIES
+This module provides functions to expand a string that contains range-like
+expressions. This is something that is usually useful when working with
+hostnames, but can be used elsewhere too.
+
+=head1 FUNCTIONS
+
+=head2 expand_range($string)
+
+    my @list = expand_range('...');
+
+This function accept a single string, evaluates expressions in those strings
+and returns a list with all avaialble permutations. Ranges with limits are
+expanded using the L<Range
+Operator|http://perldoc.perl.org/perlop.html#Range-Operators>.
+
+    my @list = expand_range('[aa-ad]'); # This is identical to ('aa' .. 'ad')
+
+The following formats are recognized and evaluated
+
+    my @list = expand_range('foo[bar,baz]');        # Comma separated list
+    my @list = expand_range('foo[aa-ad,^ab]');      # Negated element
+    my @list = expand_range('foo[aa-ag,^ab-ad]');   # Negated range
+
+
+=head1 SEE ALSO
+
+=over
+
+=item1 L<SSH::Batch>
+
+This is an extremely useful distribution if you are working with hostnames.
+C<String::Range::Expand> was inspired by this distribution, and provides only a
+subset of features of C<SSH::Batch>
+
+=item1 L<String::Glob::Permute>
+
+Pretty similar, but does not evaluate alphabetical ranges
+
+=item1 L<Text::Glob::Expand>
+
+Like C<String::Glob::Permute>, it does not evaluate alphabetical ranges. But it
+does provide some additional functionality like setting upper limits and
+formatting.
+
+=back
 
 =head1 BUGS AND LIMITATIONS
+
+This module does not attempt to limit the number of permutations for an
+expression.
 
 Please report any bugs or feature requests to
 C<bug-string-range-expand@rt.cpan.org>, or through the web interface at
