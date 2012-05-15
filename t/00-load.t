@@ -1,7 +1,7 @@
 #!perl
 
 ####################
-# LOAD CORE MODULES
+# LOAD MODULES
 ####################
 use strict;
 use warnings FATAL => 'all';
@@ -11,7 +11,8 @@ use Test::More;
 local $| = 1;
 
 # Test _use_
-use_ok('String::Range::Expand') || BAIL_OUT('Failed to load String::Range::Expand');
+use_ok('String::Range::Expand')
+    || BAIL_OUT('Failed to load String::Range::Expand');
 
 # Done
 done_testing();

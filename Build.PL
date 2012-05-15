@@ -34,8 +34,9 @@ my $builder = Module::Build->new(
         resources => {
             bugtracker =>
                 'http://rt.cpan.org/Public/Dist/Display.html?Name=String-Range-Expand',
-            repository => 'git://github.com/mithun/perl-string-range-expand.git',
-            homepage   => 'https://github.com/mithun/perl-string-range-expand',
+            repository =>
+                'git://github.com/mithun/perl-string-range-expand.git',
+            homepage => 'https://github.com/mithun/perl-string-range-expand',
         },
     },
 );
