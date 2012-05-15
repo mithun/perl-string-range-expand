@@ -10,7 +10,7 @@ use Carp qw(croak carp);
 #######################
 # VERSION
 #######################
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 #######################
 # EXPORT
@@ -200,17 +200,17 @@ The following formats are recognized and evaluated
 
 =over
 
-=item1 L<SSH::Batch>
+=item L<SSH::Batch>
 
 This is an extremely useful distribution if you are working with hostnames.
 C<String::Range::Expand> was inspired by this distribution, and provides only a
 subset of features of C<SSH::Batch>
 
-=item1 L<String::Glob::Permute>
+=item L<String::Glob::Permute>
 
 Pretty similar, but does not evaluate alphabetical ranges
 
-=item1 L<Text::Glob::Expand>
+=item L<Text::Glob::Expand>
 
 Like C<String::Glob::Permute>, it does not evaluate alphabetical ranges. But it
 does provide some additional functionality like setting upper limits and
