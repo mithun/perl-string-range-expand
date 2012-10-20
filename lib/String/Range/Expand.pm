@@ -10,7 +10,7 @@ use Carp qw(croak carp);
 #######################
 # VERSION
 #######################
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 #######################
 # EXPORT
@@ -159,9 +159,9 @@ String::Range::Expand - Expand range-like strings
 
 =head1 DESCRIPTION
 
-This module provides functions to expand a string that contains range-like
-expressions. This is something that is usually useful when working with
-hostnames, but can be used elsewhere too.
+This module provides functions to expand a string that contains
+range-like expressions. This is something that is usually useful when
+working with hostnames, but can be used elsewhere too.
 
 =head1 FUNCTIONS
 
@@ -169,9 +169,9 @@ hostnames, but can be used elsewhere too.
 
     my @list = expand_range('...');
 
-This function accept a single string, evaluates expressions in those strings
-and returns a list with all avaialble permutations. Ranges with limits are
-expanded using the L<Range
+This function accept a single string, evaluates expressions in those
+strings and returns a list with all avaialble permutations. Ranges with
+limits are expanded using the L<Range
 Operator|http://perldoc.perl.org/perlop.html#Range-Operators>.
 
     my @list = expand_range('[aa-ad]'); # This is identical to ('aa' .. 'ad')
@@ -189,9 +189,9 @@ The following formats are recognized and evaluated
 
 =item L<SSH::Batch>
 
-This is an extremely useful distribution if you are working with hostnames.
-C<String::Range::Expand> was inspired by this distribution, and provides only a
-subset of features of C<SSH::Batch>
+This is an extremely useful distribution if you are working with
+hostnames. C<String::Range::Expand> was inspired by this distribution,
+and provides only a subset of features of C<SSH::Batch>
 
 =item L<String::Glob::Permute>
 
@@ -199,9 +199,9 @@ Pretty similar, but does not evaluate alphabetical ranges
 
 =item L<Text::Glob::Expand>
 
-Like C<String::Glob::Permute>, it does not evaluate alphabetical ranges. But it
-does provide some additional functionality like setting upper limits and
-formatting.
+Like C<String::Glob::Permute>, it does not evaluate alphabetical
+ranges. But it does provide some additional functionality like setting
+upper limits and formatting.
 
 =back
 
@@ -222,7 +222,7 @@ Mithun Ayachit C<mithun@cpan.org>
 
 Copyright (c) 2012, Mithun Ayachit. All rights reserved.
 
-This module is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself. See L<perlartistic>.
+This module is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself. See L<perlartistic>.
 
 =cut

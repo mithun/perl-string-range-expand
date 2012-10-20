@@ -18,9 +18,9 @@ String::Range::Expand - Expand range-like strings
 
 # DESCRIPTION
 
-This module provides functions to expand a string that contains range-like
-expressions. This is something that is usually useful when working with
-hostnames, but can be used elsewhere too.
+This module provides functions to expand a string that contains
+range-like expressions. This is something that is usually useful when
+working with hostnames, but can be used elsewhere too.
 
 # FUNCTIONS
 
@@ -28,9 +28,9 @@ hostnames, but can be used elsewhere too.
 
     my @list = expand_range('...');
 
-This function accept a single string, evaluates expressions in those strings
-and returns a list with all avaialble permutations. Ranges with limits are
-expanded using the [Range Operator](http://perldoc.perl.org/perlop.html\#Range-Operators).
+This function accept a single string, evaluates expressions in those
+strings and returns a list with all avaialble permutations. Ranges with
+limits are expanded using the [Range Operator](http://perldoc.perl.org/perlop.html\#Range-Operators).
 
     my @list = expand_range('[aa-ad]'); # This is identical to ('aa' .. 'ad')
 
@@ -46,9 +46,9 @@ The following formats are recognized and evaluated
 
 - [SSH::Batch](http://search.cpan.org/perldoc?SSH::Batch)
 
-This is an extremely useful distribution if you are working with hostnames.
-`String::Range::Expand` was inspired by this distribution, and provides only a
-subset of features of `SSH::Batch`
+This is an extremely useful distribution if you are working with
+hostnames. `String::Range::Expand` was inspired by this distribution,
+and provides only a subset of features of `SSH::Batch`
 
 - [String::Glob::Permute](http://search.cpan.org/perldoc?String::Glob::Permute)
 
@@ -56,9 +56,9 @@ Pretty similar, but does not evaluate alphabetical ranges
 
 - [Text::Glob::Expand](http://search.cpan.org/perldoc?Text::Glob::Expand)
 
-Like `String::Glob::Permute`, it does not evaluate alphabetical ranges. But it
-does provide some additional functionality like setting upper limits and
-formatting.
+Like `String::Glob::Permute`, it does not evaluate alphabetical
+ranges. But it does provide some additional functionality like setting
+upper limits and formatting.
 
 # BUGS AND LIMITATIONS
 
@@ -77,5 +77,5 @@ Mithun Ayachit `mithun@cpan.org`
 
 Copyright (c) 2012, Mithun Ayachit. All rights reserved.
 
-This module is free software; you can redistribute it and/or modify it under
-the same terms as Perl itself. See [perlartistic](http://search.cpan.org/perldoc?perlartistic).
+This module is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself. See [perlartistic](http://search.cpan.org/perldoc?perlartistic).
