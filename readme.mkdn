@@ -29,7 +29,7 @@ working with hostnames, but can be used elsewhere too.
     my @list = expand_range('...');
 
 This function accept a single string, evaluates expressions in those
-strings and returns a list with all avaialble permutations. Ranges with
+strings and returns a list with all available permutations. Ranges with
 limits are expanded using the [Range Operator](http://perldoc.perl.org/perlop.html\#Range-Operators).
 
     my @list = expand_range('[aa-ad]'); # This is identical to ('aa' .. 'ad')
@@ -40,25 +40,30 @@ The following formats are recognized and evaluated
     my @list = expand_range('foo[aa-ad,^ab]');      # Negated element
     my @list = expand_range('foo[aa-ag,^ab-ad]');   # Negated range
 
+## expand\_expr(@array)
 
+	my @list = expand_expr('foo-bar[01-03] host[aa-ad,^ab]Z[01-04,^02-03].name');
+
+This runs `expand_range` against every range-like expression detected
+in the argument list
 
 # SEE ALSO
 
 - [SSH::Batch](http://search.cpan.org/perldoc?SSH::Batch)
 
-This is an extremely useful distribution if you are working with
-hostnames. `String::Range::Expand` was inspired by this distribution,
-and provides only a subset of features of `SSH::Batch`
+    This is an extremely useful distribution if you are working with
+    hostnames. `String::Range::Expand` was inspired by this distribution,
+    and provides only a subset of features of `SSH::Batch`
 
 - [String::Glob::Permute](http://search.cpan.org/perldoc?String::Glob::Permute)
 
-Pretty similar, but does not evaluate alphabetical ranges
+    Pretty similar, but does not evaluate alphabetical ranges
 
 - [Text::Glob::Expand](http://search.cpan.org/perldoc?Text::Glob::Expand)
 
-Like `String::Glob::Permute`, it does not evaluate alphabetical
-ranges. But it does provide some additional functionality like setting
-upper limits and formatting.
+    Like `String::Glob::Permute`, it does not evaluate alphabetical
+    ranges. But it does provide some additional functionality like setting
+    upper limits and formatting.
 
 # BUGS AND LIMITATIONS
 
@@ -75,7 +80,7 @@ Mithun Ayachit `mithun@cpan.org`
 
 # LICENSE AND COPYRIGHT
 
-Copyright (c) 2012, Mithun Ayachit. All rights reserved.
+Copyright (c) 2013, Mithun Ayachit. All rights reserved.
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself. See [perlartistic](http://search.cpan.org/perldoc?perlartistic).

@@ -8,7 +8,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.38
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Module::Build version 0.4005, CPAN::Meta::Converter version 2.131560'
 keywords:
   - text
   - string
@@ -24,10 +24,10 @@ name: String-Range-Expand
 provides:
   String::Range::Expand:
     file: lib/String/Range/Expand.pm
-    version: 0.03
+    version: 0.04
 resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=String-Range-Expand
   homepage: https://github.com/mithun/perl-string-range-expand
   license: http://dev.perl.org/licenses/
   repository: git://github.com/mithun/perl-string-range-expand.git
-version: 0.03
+version: 0.04
