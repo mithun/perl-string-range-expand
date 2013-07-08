@@ -10,7 +10,7 @@ use Carp qw(croak carp);
 #######################
 # VERSION
 #######################
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 #######################
 # EXPORT
@@ -19,7 +19,7 @@ use base qw(Exporter);
 our ( @EXPORT, @EXPORT_OK );
 
 @EXPORT    = qw(expand_range);
-@EXPORT_OK = qw(expand_range);
+@EXPORT_OK = qw(expand_range expand_expr);
 
 #######################
 # PUBLIC FUNCTIONS
@@ -50,8 +50,8 @@ sub expand_range {
             else {
                 push @bits, $range_expr;
                 $range_expr = '';
-            }
-            last unless $range_expr;
+            } ## end else [ if ( $range_expr =~ m{(\[$valid_range\])}x)]
+          last unless $range_expr;
 
         } ## end while (1)
     } ## end if ( $range_expr =~ m{\[$valid_range\]}x)
@@ -59,25 +59,35 @@ sub expand_range {
 
         # Expression does not have any ranges to expand
         push @range, $range_expr;
-    }
+    } ## end else [ if ( $range_expr =~ m{\[$valid_range\]}x)]
 
     # Expand
     foreach my $_bit (@bits) {
         if ( $_bit =~ m{^\[(.+)\]$}x ) {
             @range
-                ? do { @range = _combine( \@range, [ _compute($1) ] ); }
-                : do { @range = _compute($1); };
-        }
+              ? do { @range = _combine( \@range, [ _compute($1) ] ); }
+              : do { @range = _compute($1); };
+        } ## end if ( $_bit =~ m{^\[(.+)\]$}x)
         else {
             @range
-                ? do { @range = _combine( \@range, [$_bit] ); }
-                : do { push( @range, $_bit ); };
-        }
+              ? do { @range = _combine( \@range, [$_bit] ); }
+              : do { push( @range, $_bit ); };
+        } ## end else [ if ( $_bit =~ m{^\[(.+)\]$}x)]
     } ## end foreach my $_bit (@bits)
 
     @range = sort { lc($a) cmp lc($b) } @range if @range;
-    return @range;
+  return @range;
 } ## end sub expand_range
+
+
+sub expand_expr {
+    my @range;
+    foreach my $expr ( _split_expr(@_) ) {
+        push @range, expand_range($expr);
+    }
+    @range = sort { lc($a) cmp lc($b) } @range if @range;
+  return @range;
+} ## end sub expand_expr
 
 #######################
 # INTERNAL FUNCTIONS
@@ -101,7 +111,7 @@ sub _compute {
             foreach my $_exclude ( $1 .. $2 ) {
                 @list = grep { !/^$_exclude$/x } @list;
             }
-        }
+        } ## end elsif ( $_range =~ m{^\^(\w+)\-(\w+)$}x)
 
         # Type: [^zz]. Negate element
         elsif ( $_range =~ m{^\^(\w+)$}x ) {
@@ -111,7 +121,7 @@ sub _compute {
         # Type: [foo]. Individual element
         else { push @list, $_range; }
     } ## end foreach my $_range ( split(...))
-    return @list;
+  return @list;
 } ## end sub _compute
 
 ## _combine
@@ -124,10 +134,38 @@ sub _combine {
         foreach my $_a2 (@$a2) {
             push @list, join( '', $_a1, $_a2 );
         }
-    }
+    } ## end foreach my $_a1 (@$a1)
 
-    return @list;
+  return @list;
 } ## end sub _combine
+
+## split string into range expressions
+sub _split_expr {
+    my @args = @_;
+    my @found;
+    foreach my $arg (@args) {
+        my @parts = split( /\s*(?<!\\)[\s,]\s*/, $arg );
+        while ( my $bit = shift @parts ) {
+          next unless $bit =~ m{^\S+$};
+            if ( $bit =~ m{\[} and $bit !~ m{\]} ) {
+                my @current = ($bit);
+                while ( my $next = shift @parts ) {
+                    push @current, $next;
+                  last if $next =~ m{\]};
+                } ## end while ( my $next = shift ...)
+                push @found, join( ',', @current );
+            } ## end if ( $bit =~ m{\[} and...{]})
+            elsif ( $bit =~ m{\]} and $bit !~ m{\[} ) {
+                my $previous = pop @found;
+                push @found, join( ',', $previous, $bit );
+            } ## end elsif ( $bit =~ m{\]} and...{[})
+            else {
+                push @found, $bit;
+            }
+        } ## end while ( my $bit = shift @parts)
+    } ## end foreach my $arg (@args)
+  return @found;
+} ## end sub _split_expr
 
 #######################
 1;
@@ -170,7 +208,7 @@ working with hostnames, but can be used elsewhere too.
     my @list = expand_range('...');
 
 This function accept a single string, evaluates expressions in those
-strings and returns a list with all avaialble permutations. Ranges with
+strings and returns a list with all available permutations. Ranges with
 limits are expanded using the L<Range
 Operator|http://perldoc.perl.org/perlop.html#Range-Operators>.
 
@@ -182,6 +220,12 @@ The following formats are recognized and evaluated
     my @list = expand_range('foo[aa-ad,^ab]');      # Negated element
     my @list = expand_range('foo[aa-ag,^ab-ad]');   # Negated range
 
+=head2 expand_expr(@array)
+
+	my @list = expand_expr('foo-bar[01-03] host[aa-ad,^ab]Z[01-04,^02-03].name');
+
+This runs C<expand_range> against every range-like expression detected
+in the argument list
 
 =head1 SEE ALSO
 
@@ -220,7 +264,7 @@ Mithun Ayachit C<mithun@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2012, Mithun Ayachit. All rights reserved.
+Copyright (c) 2013, Mithun Ayachit. All rights reserved.
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself. See L<perlartistic>.

@@ -2,6 +2,10 @@
 % Mithun Ayachit
 %
 
+# 0.04
+
+- Added `expand_expr` that acts against comma (or space) separated ranges
+
 # 0.03
 
 -   Fix a condition where ranges were being gobbled up
