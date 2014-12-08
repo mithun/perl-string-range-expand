@@ -14,8 +14,10 @@ local $| = 1;
 
 # Test Expansion
 is_deeply(
-    [ expand_range('foo-bar[01-03] host[aa-ad,^ab]Z[01-04,^02-03].name, web') ],
     [
+        expand_range(
+            'foo-bar[01-03] host[aa-ad,^ab]Z[01-04,^02-03].name, web')
+    ], [
         'foo-bar01 hostaaZ01.name, web',
         'foo-bar01 hostaaZ04.name, web',
         'foo-bar01 hostacZ01.name, web',

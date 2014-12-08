@@ -10,7 +10,7 @@ use Carp qw(croak carp);
 #######################
 # VERSION
 #######################
-our $VERSION = '0.04';
+our $VERSION = '0.4.1';
 
 #######################
 # EXPORT
@@ -222,7 +222,7 @@ The following formats are recognized and evaluated
 
 =head2 expand_expr(@array)
 
-	my @list = expand_expr('foo-bar[01-03] host[aa-ad,^ab]Z[01-04,^02-03].name');
+    my @list = expand_expr('foo-bar[01-03] host[aa-ad,^ab]Z[01-04,^02-03].name');
 
 This runs C<expand_range> against every range-like expression detected
 in the argument list
@@ -254,9 +254,8 @@ upper limits and formatting.
 This module does not attempt to limit the number of permutations for an
 expression.
 
-Please report any bugs or feature requests to
-C<bug-string-range-expand@rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org/Public/Dist/Display.html?Name=String-Range-Expand>
+Please report any bugs or feature requests at
+L<https://github.com/mithun/perl-string-range-expand/issues>
 
 =head1 AUTHOR
 
@@ -264,7 +263,7 @@ Mithun Ayachit C<mithun@cpan.org>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2013, Mithun Ayachit. All rights reserved.
+Copyright (c) 2014, Mithun Ayachit. All rights reserved.
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself. See L<perlartistic>.

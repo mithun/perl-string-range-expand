@@ -4,7 +4,7 @@
       "Mithun Ayachit <mithun@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4005, CPAN::Meta::Converter version 2.131560",
+   "generated_by" : "Module::Build version 0.421",
    "keywords" : [
       "text",
       "string",
@@ -37,13 +37,13 @@
    "provides" : {
       "String::Range::Expand" : {
          "file" : "lib/String/Range/Expand.pm",
-         "version" : "0.04"
+         "version" : "v0.4.1"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "http://rt.cpan.org/Public/Dist/Display.html?Name=String-Range-Expand"
+         "web" : "https://github.com/mithun/perl-string-range-expand/issues"
       },
       "homepage" : "https://github.com/mithun/perl-string-range-expand",
       "license" : [
@@ -53,5 +53,5 @@
          "url" : "git://github.com/mithun/perl-string-range-expand.git"
       }
    },
-   "version" : "0.04"
+   "version" : "v0.4.1"
 }

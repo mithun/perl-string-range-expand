@@ -30,7 +30,8 @@ working with hostnames, but can be used elsewhere too.
 
 This function accept a single string, evaluates expressions in those
 strings and returns a list with all available permutations. Ranges with
-limits are expanded using the [Range Operator](http://perldoc.perl.org/perlop.html\#Range-Operators).
+limits are expanded using the [Range
+Operator](http://perldoc.perl.org/perlop.html#Range-Operators).
 
     my @list = expand_range('[aa-ad]'); # This is identical to ('aa' .. 'ad')
 
@@ -42,24 +43,24 @@ The following formats are recognized and evaluated
 
 ## expand\_expr(@array)
 
-	my @list = expand_expr('foo-bar[01-03] host[aa-ad,^ab]Z[01-04,^02-03].name');
+    my @list = expand_expr('foo-bar[01-03] host[aa-ad,^ab]Z[01-04,^02-03].name');
 
 This runs `expand_range` against every range-like expression detected
 in the argument list
 
 # SEE ALSO
 
-- [SSH::Batch](http://search.cpan.org/perldoc?SSH::Batch)
+- [SSH::Batch](https://metacpan.org/pod/SSH::Batch)
 
     This is an extremely useful distribution if you are working with
     hostnames. `String::Range::Expand` was inspired by this distribution,
     and provides only a subset of features of `SSH::Batch`
 
-- [String::Glob::Permute](http://search.cpan.org/perldoc?String::Glob::Permute)
+- [String::Glob::Permute](https://metacpan.org/pod/String::Glob::Permute)
 
     Pretty similar, but does not evaluate alphabetical ranges
 
-- [Text::Glob::Expand](http://search.cpan.org/perldoc?Text::Glob::Expand)
+- [Text::Glob::Expand](https://metacpan.org/pod/Text::Glob::Expand)
 
     Like `String::Glob::Permute`, it does not evaluate alphabetical
     ranges. But it does provide some additional functionality like setting
@@ -70,9 +71,8 @@ in the argument list
 This module does not attempt to limit the number of permutations for an
 expression.
 
-Please report any bugs or feature requests to
-`bug-string-range-expand@rt.cpan.org`, or through the web interface at
-[http://rt.cpan.org/Public/Dist/Display.html?Name=String-Range-Expand](http://rt.cpan.org/Public/Dist/Display.html?Name=String-Range-Expand)
+Please report any bugs or feature requests at
+[https://github.com/mithun/perl-string-range-expand/issues](https://github.com/mithun/perl-string-range-expand/issues)
 
 # AUTHOR
 
@@ -80,7 +80,7 @@ Mithun Ayachit `mithun@cpan.org`
 
 # LICENSE AND COPYRIGHT
 
-Copyright (c) 2013, Mithun Ayachit. All rights reserved.
+Copyright (c) 2014, Mithun Ayachit. All rights reserved.
 
 This module is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself. See [perlartistic](http://search.cpan.org/perldoc?perlartistic).
+under the same terms as Perl itself. See [perlartistic](https://metacpan.org/pod/perlartistic).

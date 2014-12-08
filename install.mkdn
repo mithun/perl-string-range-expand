@@ -1,6 +1,8 @@
-% Installing String-Range-Expand
-% Mithun Ayachit
-%
+---
+author:
+- Mithun Ayachit
+title: 'Installing String-Range-Expand'
+...
 
 # Distribution page
 

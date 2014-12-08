@@ -1,10 +1,14 @@
+
+
 NAME
-====
+
 
 String::Range::Expand - Expand range-like strings
 
+
+
 SYNOPSIS
-========
+
 
     use String::Range::Expand;
 
@@ -18,18 +22,21 @@ SYNOPSIS
         # hostae01
         # hostae04
 
+
+
 DESCRIPTION
-===========
+
 
 This module provides functions to expand a string that contains
 range-like expressions. This is something that is usually useful when
 working with hostnames, but can be used elsewhere too.
 
+
+
 FUNCTIONS
-=========
+
 
 expand_range($string)
----------------------
 
     my @list = expand_range('...');
 
@@ -45,16 +52,18 @@ The following formats are recognized and evaluated
     my @list = expand_range('foo[aa-ad,^ab]');      # Negated element
     my @list = expand_range('foo[aa-ag,^ab-ad]');   # Negated range
 
+
 expand_expr(@array)
--------------------
 
     my @list = expand_expr('foo-bar[01-03] host[aa-ad,^ab]Z[01-04,^02-03].name');
 
 This runs expand_range against every range-like expression detected in
 the argument list
 
+
+
 SEE ALSO
-========
+
 
 -   SSH::Batch
 
@@ -72,25 +81,30 @@ SEE ALSO
     ranges. But it does provide some additional functionality like
     setting upper limits and formatting.
 
+
+
 BUGS AND LIMITATIONS
-====================
+
 
 This module does not attempt to limit the number of permutations for an
 expression.
 
-Please report any bugs or feature requests to
-bug-string-range-expand@rt.cpan.org, or through the web interface at
-http://rt.cpan.org/Public/Dist/Display.html?Name=String-Range-Expand
+Please report any bugs or feature requests at
+https://github.com/mithun/perl-string-range-expand/issues
+
+
 
 AUTHOR
-======
+
 
 Mithun Ayachit mithun@cpan.org
 
-LICENSE AND COPYRIGHT
-=====================
 
-Copyright (c) 2013, Mithun Ayachit. All rights reserved.
+
+LICENSE AND COPYRIGHT
+
+
+Copyright (c) 2014, Mithun Ayachit. All rights reserved.
 
 This module is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself. See perlartistic.
