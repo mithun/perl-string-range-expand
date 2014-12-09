@@ -24,10 +24,10 @@ name: String-Range-Expand
 provides:
   String::Range::Expand:
     file: lib/String/Range/Expand.pm
-    version: v0.4.1
+    version: v1.0.1
 resources:
   bugtracker: https://github.com/mithun/perl-string-range-expand/issues
   homepage: https://github.com/mithun/perl-string-range-expand
   license: http://dev.perl.org/licenses/
   repository: git://github.com/mithun/perl-string-range-expand.git
-version: v0.4.1
+version: v1.0.1
